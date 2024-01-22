@@ -1,6 +1,15 @@
 class Solution:
     def maxProfit(self, prices: list[int]) -> int:
-        pass
+        lowest_price = prices[0]
+        max_profit = 0
+
+        for i in prices:
+            if i < lowest_price:
+                lowest_price = i
+            if i - lowest_price > max_profit:
+                max_profit = i - lowest_price
+
+        return max_profit
 
 
 def case_one():
