@@ -9,11 +9,11 @@ class Solution:
                 counter[ch] += 1
         sorted_counter = sorted(counter.items(), key=lambda x: x[1], reverse=True)
 
-        lst = []
+        res = ""
         for tuple in sorted_counter:
-            lst.append(tuple[1] * tuple[0])
+            res += (tuple[1] * tuple[0])
 
-        return "".join(lst)
+        return res
 
 
 def case_one():
