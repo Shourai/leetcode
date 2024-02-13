@@ -15,7 +15,20 @@ headers = {
 }
 
 json_data = {
-    "query": "\n    query questionEditorData($titleSlug: String!) {\n  question(titleSlug: $titleSlug) {\n    questionId\n    questionFrontendId\n    codeSnippets {\n      lang\n      langSlug\n      code\n    } }\n }\n    ",
+    "query": """
+        query questionEditorData($titleSlug: String!) {
+          question(titleSlug: $titleSlug) {
+            questionId
+            questionFrontendId
+            codeSnippets {
+              lang
+              langSlug
+              code
+            }
+            exampleTestcaseList
+          }
+        }
+    """,
     "variables": {
         "titleSlug": f"{slug}",
     },
@@ -38,6 +51,10 @@ problem_number = f"{int(problem_number):04}"
 problem_name = slug.replace("-", "_")
 
 filename = problem_number + "_" + problem_name + ".py"
+
+exampleTestcaseList = r["data"]["question"]["exampleTestcaseList"]
+for case in exampleTestcaseList:
+    print(case)
 
 test_cases = """
 def case_one():
