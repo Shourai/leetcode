@@ -1,27 +1,22 @@
 class Solution:
     def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
         n = len(temperatures) - 1
-        days = []
+        result = (n + 1) * [0]
+        stack = []
 
-        left = 0
-        right = 1
+        while n >= 0:
+            if not stack:
+                result[n] = 0
+                stack.append(n)
+                n -= 1
+            elif temperatures[n] < temperatures[stack[-1]]:
+                result[n] = stack[-1] - n
+                stack.append(n)
+                n -= 1
+            else:
+                stack.pop()
 
-        while right <= n:
-            if temperatures[left] < temperatures[right]:
-                days.append(right - left)
-                left += 1
-                right = left + 1
-                continue
-            elif left == n - 1 and right == n:
-                days.append(0)
-                right += 1
-                break
-            elif temperatures[left] > temperatures[right]:
-                right += 1
-                continue
-
-        days.append(0)
-        return days
+        return result
 
 
 def case_one():
