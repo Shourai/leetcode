@@ -3,10 +3,7 @@ class Solution:
         n = len(nums2) 
         result = [-1] * len(nums1)
 
-        index_map = {}
-
-        for idx, v in enumerate(nums1):
-            index_map[v] = idx
+        index_map = { v:i for i,v in enumerate(nums1) }
 
         for i in range(n):
             if nums2[i] in nums1:
