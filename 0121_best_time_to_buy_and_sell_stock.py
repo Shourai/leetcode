@@ -6,7 +6,7 @@ class Solution:
         for i in prices:
             if i < lowest_price:
                 lowest_price = i
-            if i - lowest_price > max_profit:
+            elif i - lowest_price > max_profit:
                 max_profit = i - lowest_price
 
         return max_profit
