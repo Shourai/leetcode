@@ -77,4 +77,5 @@ if __name__ == "__main__":
 
 with open(filename, "w+") as f:
     f.write(code_snippet)
+    f.write("pass\n")
     f.write(test_cases)
