@@ -1,33 +1,25 @@
+from typing import Counter
+
+
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         n = len(s1)
-        d1 = {}
-        d2 = {}
-        for ch in s1:
-            if ch not in d1:
-                d1[ch] = 1
-            else:
-                d1[ch] += 1
-
-        left = 0
-        right = 0
+        counter = Counter(s1)
+        matched = 0
 
         for i in range(len(s2)):
-            if s2[i] in d1:
-                left = i
-                right = left + len(s1)
-                if right > len(s2):
-                    return False
-                for j in range(left, right):
-                    if s2[j] not in d2:
-                        d2[s2[j]] = 1
-                    else:
-                        d2[s2[j]] += 1
-                if d1 == d2:
-                    return True
-                else:
-                    d2 = {}
+            if s2[i] in counter:
+                counter[s2[i]] -= 1
+                if counter[s2[i]] == 0:
+                    matched += 1
 
+            if i >= n and s2[i-n] in counter:
+                if counter[s2[i-n]] == 0:
+                    matched -= 1
+                counter[s2[i-n]] += 1
+
+            if matched == len(counter):
+                return True
         return False
 
 
@@ -59,8 +51,8 @@ def case_five():
     assert Solution().checkInclusion(s1, s2) is False
 
 if __name__ == "__main__":
-    # case_one()
-    # case_two()
-    # case_three()
-    # case_four()
+    case_one()
+    case_two()
+    case_three()
+    case_four()
     case_five()
