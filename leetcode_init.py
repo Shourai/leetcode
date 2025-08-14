@@ -44,7 +44,7 @@ code_snippet = r["data"]["question"]["codeSnippets"][3]["code"]
 
 
 # Format number into 4 digit format
-problem_number = r["data"]["question"]["questionId"]
+problem_number = r["data"]["question"]["questionFrontendId"]
 problem_number = f"{int(problem_number):04}"
 
 # Lowercase the name and change spaces to _
