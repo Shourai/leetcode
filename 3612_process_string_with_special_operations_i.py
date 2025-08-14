@@ -1,22 +1,13 @@
 class Solution:
-    def remove_last_char(self, s: str) -> str:
-        return s[:-1]
-
-    def duplicate_string(self, s: str) -> str:
-        return s + s
-
-    def reverse_string(self, s: str) -> str:
-        return s[::-1]
-
     def processStr(self, s: str) -> str:
         string = ""
         for ch in s:
             if ch == "*":
-                string = self.remove_last_char(string)
+                string = string[:-1]
             elif ch == "#":
-                string = self.duplicate_string(string)
+                string += string
             elif ch == "%":
-                string = self.reverse_string(string)
+                string = string[::-1]
             else:
                 string += ch
         return string
