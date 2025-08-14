@@ -1,3 +1,5 @@
+# Useful graphql endpoints: https://github.com/nikhil-ravi/LeetScrape/tree/main
+
 import sys
 import requests
 
