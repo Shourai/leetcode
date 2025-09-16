@@ -53,10 +53,11 @@ problem_number = f"{int(problem_number):04}"
 problem_name = slug.replace("-", "_")
 
 filename = problem_number + "_" + problem_name + ".py"
+print(filename)
 
-exampleTestcaseList = r["data"]["question"]["exampleTestcaseList"]
-for case in exampleTestcaseList:
-    print(case)
+# exampleTestcaseList = r["data"]["question"]["exampleTestcaseList"]
+# for case in exampleTestcaseList:
+#     print(case)
 
 test_cases = """
 def case_one():
