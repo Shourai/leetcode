@@ -2,6 +2,7 @@
 
 import sys
 import requests
+import json
 
 
 # Get first argument
@@ -42,7 +43,8 @@ response = requests.post(
 )
 
 r = response.json()
-code_snippet = r["data"]["question"]["codeSnippets"][3]["code"]
+# print(json.dumps(r))
+code_snippet = r["data"]["question"]["codeSnippets"][2]["code"]
 
 
 # Format number into 4 digit format
@@ -55,16 +57,18 @@ problem_name = slug.replace("-", "_")
 filename = problem_number + "_" + problem_name + ".py"
 print(filename)
 
-# exampleTestcaseList = r["data"]["question"]["exampleTestcaseList"]
+exampleTestcaseList = r["data"]["question"]["exampleTestcaseList"]
 # for case in exampleTestcaseList:
 #     print(case)
 
-test_cases = """
+test_cases = f"""
 def case_one():
+    {exampleTestcaseList[0]}
     pass
 
 
 def case_two():
+    {exampleTestcaseList[1]}
     pass
 
 
